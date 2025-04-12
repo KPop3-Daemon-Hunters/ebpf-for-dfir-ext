@@ -1,0 +1,186 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{4F83C919-B8F9-4F5D-B7E1-3A72FF65151C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "extensions", "extensions", "{B5A81943-2F85-4919-9161-E8836C687E81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{1F0EB0F2-8CE2-4094-ABE3-BF19718944E6}"
+	ProjectSection(SolutionItems) = preProject
+		include\ebpf_fileevent_hooks.h = include\ebpf_fileevent_hooks.h
+		include\ebpf_fileevent_program_attach_type_guids.h = include\ebpf_fileevent_program_attach_type_guids.h
+		include\ebpf_netevent_hooks.h = include\ebpf_netevent_hooks.h
+		include\ebpf_netevent_program_attach_type_guids.h = include\ebpf_netevent_program_attach_type_guids.h
+		include\ebpf_ntos_hooks.h = include\ebpf_ntos_hooks.h
+		include\ebpf_ntos_program_attach_type_guids.h = include\ebpf_ntos_program_attach_type_guids.h
+		include\ebpf_regevent_hooks.h = include\ebpf_regevent_hooks.h
+		include\ebpf_regevent_program_attach_type_guids.h = include\ebpf_regevent_program_attach_type_guids.h
+		include\git_commit_id.h = include\git_commit_id.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "fileeventebpfext", "fileeventebpfext", "{CB32772A-B46E-4C03-B2BB-32D6CBE27674}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "neteventebpfext", "neteventebpfext", "{B7B8E84D-3EEB-4CC3-95DA-4A89B8C46A37}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{D45AA654-5FDD-4E8C-8627-AB48D133FF86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ebpf_ext", "ebpf_ext", "{3C0D628F-3350-47B1-A384-F1EEFA3F5AFB}"
+	ProjectSection(SolutionItems) = preProject
+		libs\ebpf_ext\ebpf_ext.c = libs\ebpf_ext\ebpf_ext.c
+		libs\ebpf_ext\ebpf_ext.h = libs\ebpf_ext\ebpf_ext.h
+		libs\ebpf_ext\ebpf_ext_drv.c = libs\ebpf_ext\ebpf_ext_drv.c
+		libs\ebpf_ext\ebpf_ext_hook_provider.c = libs\ebpf_ext\ebpf_ext_hook_provider.c
+		libs\ebpf_ext\ebpf_ext_hook_provider.h = libs\ebpf_ext\ebpf_ext_hook_provider.h
+		libs\ebpf_ext\ebpf_ext_prog_info_provider.c = libs\ebpf_ext\ebpf_ext_prog_info_provider.c
+		libs\ebpf_ext\ebpf_ext_prog_info_provider.h = libs\ebpf_ext\ebpf_ext_prog_info_provider.h
+		libs\ebpf_ext\ebpf_ext_tracelog.c = libs\ebpf_ext\ebpf_ext_tracelog.c
+		libs\ebpf_ext\ebpf_ext_tracelog.h = libs\ebpf_ext\ebpf_ext_tracelog.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "include", "include", "{1F0FB412-31A8-4C99-A63C-2808B6785770}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "kernel", "kernel", "{6FC391A5-D816-4885-9F93-C079C85FB406}"
+	ProjectSection(SolutionItems) = preProject
+		libs\include\kernel\framework.h = libs\include\kernel\framework.h
+		libs\include\kernel\inttypes.h = libs\include\kernel\inttypes.h
+		libs\include\kernel\shared_context.h = libs\include\kernel\shared_context.h
+		libs\include\kernel\stdbool.h = libs\include\kernel\stdbool.h
+		libs\include\kernel\stdint.h = libs\include\kernel\stdint.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "user", "user", "{BAB87996-0A4B-40AB-B3E4-BA132602ED9A}"
+	ProjectSection(SolutionItems) = preProject
+		libs\include\user\framework.h = libs\include\user\framework.h
+		libs\include\user\shared_context.h = libs\include\user\shared_context.h
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "neteventebpfext", "extensions\neteventebpfext\sys\neteventebpfext.vcxproj", "{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fileeventebpfext", "extensions\fileeventebpfext\sys\fileeventebpfext.vcxproj", "{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "proceventebpfext", "proceventebpfext", "{5DE3EA6F-CE56-4B9F-B4E3-1ADB440A9530}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "proceventebpfext", "extensions\proceventebpfext\sys\proceventebpfext.vcxproj", "{55499E36-37D4-4F86-B694-9F2990315758}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "regeventebpfext", "regeventebpfext", "{A69FE3D7-CC10-468D-B517-DFDF245302A4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "regeventebpfext", "extensions\regeventebpfext\sys\regeventebpfext.vcxproj", "{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM64 = Debug|ARM64
+		Debug|x64 = Debug|x64
+		NativeOnlyDebug|ARM64 = NativeOnlyDebug|ARM64
+		NativeOnlyDebug|x64 = NativeOnlyDebug|x64
+		NativeOnlyRelease|ARM64 = NativeOnlyRelease|ARM64
+		NativeOnlyRelease|x64 = NativeOnlyRelease|x64
+		Release|ARM64 = Release|ARM64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Debug|ARM64.Build.0 = Debug|ARM64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Debug|x64.ActiveCfg = Debug|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Debug|x64.Build.0 = Debug|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Debug|x64.Deploy.0 = Debug|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyDebug|ARM64.ActiveCfg = NativeOnlyDebug|ARM64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyDebug|ARM64.Build.0 = NativeOnlyDebug|ARM64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyDebug|x64.ActiveCfg = NativeOnlyDebug|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyDebug|x64.Build.0 = NativeOnlyDebug|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyDebug|x64.Deploy.0 = NativeOnlyDebug|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyRelease|ARM64.ActiveCfg = NativeOnlyRelease|ARM64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyRelease|ARM64.Build.0 = NativeOnlyRelease|ARM64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyRelease|x64.ActiveCfg = NativeOnlyRelease|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyRelease|x64.Build.0 = NativeOnlyRelease|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.NativeOnlyRelease|x64.Deploy.0 = NativeOnlyRelease|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Release|ARM64.ActiveCfg = Release|ARM64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Release|ARM64.Build.0 = Release|ARM64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Release|x64.ActiveCfg = Release|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Release|x64.Build.0 = Release|x64
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821}.Release|x64.Deploy.0 = Release|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Debug|ARM64.Build.0 = Debug|ARM64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Debug|x64.ActiveCfg = Debug|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Debug|x64.Build.0 = Debug|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Debug|x64.Deploy.0 = Debug|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyDebug|ARM64.ActiveCfg = Debug|ARM64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyDebug|ARM64.Build.0 = Debug|ARM64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyDebug|x64.ActiveCfg = Debug|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyDebug|x64.Build.0 = Debug|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyDebug|x64.Deploy.0 = Debug|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyRelease|ARM64.ActiveCfg = Release|ARM64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyRelease|ARM64.Build.0 = Release|ARM64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyRelease|x64.ActiveCfg = Release|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyRelease|x64.Build.0 = Release|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.NativeOnlyRelease|x64.Deploy.0 = Release|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Release|ARM64.ActiveCfg = Release|ARM64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Release|ARM64.Build.0 = Release|ARM64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Release|x64.ActiveCfg = Release|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Release|x64.Build.0 = Release|x64
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD}.Release|x64.Deploy.0 = Release|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Debug|ARM64.Build.0 = Debug|ARM64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Debug|x64.ActiveCfg = Debug|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Debug|x64.Build.0 = Debug|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Debug|x64.Deploy.0 = Debug|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyDebug|ARM64.ActiveCfg = Debug|ARM64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyDebug|ARM64.Build.0 = Debug|ARM64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyDebug|x64.ActiveCfg = Debug|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyDebug|x64.Build.0 = Debug|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyDebug|x64.Deploy.0 = Debug|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyRelease|ARM64.ActiveCfg = Release|ARM64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyRelease|ARM64.Build.0 = Release|ARM64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyRelease|x64.ActiveCfg = Release|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyRelease|x64.Build.0 = Release|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.NativeOnlyRelease|x64.Deploy.0 = Release|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Release|ARM64.ActiveCfg = Release|ARM64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Release|ARM64.Build.0 = Release|ARM64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Release|x64.ActiveCfg = Release|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Release|x64.Build.0 = Release|x64
+		{55499E36-37D4-4F86-B694-9F2990315758}.Release|x64.Deploy.0 = Release|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Debug|ARM64.ActiveCfg = Debug|ARM64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Debug|ARM64.Build.0 = Debug|ARM64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Debug|x64.ActiveCfg = Debug|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Debug|x64.Build.0 = Debug|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Debug|x64.Deploy.0 = Debug|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyDebug|ARM64.ActiveCfg = Debug|ARM64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyDebug|ARM64.Build.0 = Debug|ARM64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyDebug|x64.ActiveCfg = Debug|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyDebug|x64.Build.0 = Debug|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyDebug|x64.Deploy.0 = Debug|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyRelease|ARM64.ActiveCfg = Release|ARM64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyRelease|ARM64.Build.0 = Release|ARM64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyRelease|x64.ActiveCfg = Release|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyRelease|x64.Build.0 = Release|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.NativeOnlyRelease|x64.Deploy.0 = Release|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Release|ARM64.ActiveCfg = Release|ARM64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Release|ARM64.Build.0 = Release|ARM64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Release|x64.ActiveCfg = Release|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Release|x64.Build.0 = Release|x64
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C}.Release|x64.Deploy.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1F0EB0F2-8CE2-4094-ABE3-BF19718944E6} = {B5A81943-2F85-4919-9161-E8836C687E81}
+		{CB32772A-B46E-4C03-B2BB-32D6CBE27674} = {B5A81943-2F85-4919-9161-E8836C687E81}
+		{B7B8E84D-3EEB-4CC3-95DA-4A89B8C46A37} = {B5A81943-2F85-4919-9161-E8836C687E81}
+		{D45AA654-5FDD-4E8C-8627-AB48D133FF86} = {B5A81943-2F85-4919-9161-E8836C687E81}
+		{3C0D628F-3350-47B1-A384-F1EEFA3F5AFB} = {D45AA654-5FDD-4E8C-8627-AB48D133FF86}
+		{1F0FB412-31A8-4C99-A63C-2808B6785770} = {D45AA654-5FDD-4E8C-8627-AB48D133FF86}
+		{6FC391A5-D816-4885-9F93-C079C85FB406} = {1F0FB412-31A8-4C99-A63C-2808B6785770}
+		{BAB87996-0A4B-40AB-B3E4-BA132602ED9A} = {1F0FB412-31A8-4C99-A63C-2808B6785770}
+		{DB2CE6D8-F3B3-4C35-A585-5C88B4684821} = {B7B8E84D-3EEB-4CC3-95DA-4A89B8C46A37}
+		{4AD086F6-0232-4E7D-BF20-4A07B6258FAD} = {CB32772A-B46E-4C03-B2BB-32D6CBE27674}
+		{5DE3EA6F-CE56-4B9F-B4E3-1ADB440A9530} = {B5A81943-2F85-4919-9161-E8836C687E81}
+		{55499E36-37D4-4F86-B694-9F2990315758} = {5DE3EA6F-CE56-4B9F-B4E3-1ADB440A9530}
+		{A69FE3D7-CC10-468D-B517-DFDF245302A4} = {B5A81943-2F85-4919-9161-E8836C687E81}
+		{32C496B0-CE8E-4D8B-8357-EA4BAC9E076C} = {A69FE3D7-CC10-468D-B517-DFDF245302A4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD878B21-15C8-4B6D-84EF-410BC07B18F4}
+	EndGlobalSection
+EndGlobal

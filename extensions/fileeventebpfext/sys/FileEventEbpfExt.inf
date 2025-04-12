@@ -1,0 +1,105 @@
+;
+; fileeventebpfext.inf
+;
+
+[Version]
+Signature   = "$Windows NT$"
+Class = "ActivityMonitor"
+ClassGuid = {b86dff51-a31e-4bac-b3cf-e8cfe75c9fc2}
+Provider    = "CapeLabs, Inc."
+DriverVer   = 06/05/2009,1.0.0.1
+CatalogFile = FileEventEbpfExt.cat
+PnpLockdown = 1
+
+[SourceDisksNames]
+12=%ServiceDescription%,,,
+
+[SourceDisksFiles]
+FileEventEbpfExt.sys = 12
+
+[DestinationDirs]
+FileEventEbpfExtDownlevel.CopyDriverFiles = 12            ;%windir%\system32\drivers
+FileEventEbpfExtDownlevel.DelDriverFiles  = 12            ;%windir%\system32\drivers
+FileEventEbpfExt.DriverFiles              = 13            ;driver store
+
+;
+; Support sections
+;
+
+;;
+;; Registry values shared for all OS versions
+;;
+[Common.AddRegistry]
+HKR,"Parameters","UserMapping",0x00000000,%UserMapping%
+HKR,"Parameters","UserMappingFinalComponentShort",0x00000000,%UserMappingFinalComponentShort%
+HKR,"Parameters","RealMapping",0x00000000,%RealMapping%
+
+;;
+;; Downlevel default install sections
+;;
+
+[DefaultInstall.NT$ARCH$]
+OptionDesc          = %ServiceDescription%
+CopyFiles           = FileEventEbpfExtDownlevel.CopyDriverFiles
+
+[DefaultInstall.NT$ARCH$.Services]
+AddService          = %ServiceName%,,FileEventEbpfExtDownlevel.Service
+
+;;
+;; Downlevel default uninstall sections
+;;
+
+[DefaultUninstall.NT$ARCH$]
+LegacyUninstall = 1
+DelFiles        = FileEventEbpfExtDownlevel.DelDriverFiles
+
+[DefaultUninstall.NT$ARCH$.Services]
+DelService = %ServiceName%,0x200      ;Ensure service is stopped before deleting
+
+;
+; Downlevel support sections
+;
+
+[FileEventEbpfExtDownlevel.Service]
+DisplayName      = %ServiceName%
+Description      = %ServiceDescription%
+ServiceBinary    = %12%\%DriverName%.sys        ;%windir%\system32\drivers\
+Dependencies     = "FltMgr"
+ServiceType      = 2                            ;SERVICE_FILE_SYSTEM_DRIVER
+StartType        = 3                            ;SERVICE_DEMAND_START
+ErrorControl     = 1                            ;SERVICE_ERROR_NORMAL
+LoadOrderGroup   = "FSFilter Activity Monitor"
+AddReg           = FileEventEbpfExtDownlevel.AddRegistry, Common.AddRegistry
+
+[FileEventEbpfExtDownlevel.AddRegistry]
+HKR,,"SupportedFeatures",0x00010001,0x3
+HKR,"Instances","DefaultInstance",0x00000000,%DefaultInstance%
+HKR,"Instances\"%Instance1.Name%,"Altitude",0x00000000,%Instance1.Altitude%
+HKR,"Instances\"%Instance1.Name%,"Flags",0x00010001,%Instance1.Flags%
+
+[FileEventEbpfExtDownlevel.CopyDriverFiles]
+%DriverName%.sys
+
+[FileEventEbpfExtDownlevel.DelDriverFiles]
+%DriverName%.sys
+
+;;
+;; String Section
+;;
+
+[Strings]
+ProviderString          = "TODO-Set-Provider"
+ServiceDescription      = "FileEventEbpfExt Mini-Filter Driver Sample"
+ServiceName             = "FileEventEbpfExt"
+DriverName              = "FileEventEbpfExt"
+
+;Instances specific information.
+DefaultInstance         = "FileEventEbpfExt Instance"
+Instance1.Name          = "FileEventEbpfExt Instance"
+Instance1.Altitude      = "370120"
+Instance1.Flags         = 0x0              ; Allow all attachments
+
+;Default settings
+UserMapping                    = "\X\Y"
+UserMappingFinalComponentShort = "Y"
+RealMapping                    = "\A\B"

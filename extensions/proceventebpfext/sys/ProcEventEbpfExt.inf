@@ -1,0 +1,136 @@
+;
+; ProcEventEbpfExt.inf
+;
+
+[Version]
+Signature   = "$Windows NT$"
+Class = "ActivityMonitor"
+ClassGuid = {b86dff51-a31e-4bac-b3cf-e8cfe75c9fc2}
+Provider    = "CapeLabs, Inc."
+DriverVer   = 06/05/2009,1.0.0.1
+CatalogFile = ProcEventEbpfExt.cat
+PnpLockdown = 1
+
+[SourceDisksNames]
+12=%ServiceDescription%,,,
+
+[SourceDisksFiles]
+ProcEventEbpfExt.sys = 12
+
+[DestinationDirs]
+ProcEventEbpfExtDownlevel.CopyDriverFiles = 12            ;%windir%\system32\drivers
+ProcEventEbpfExtDownlevel.DelDriverFiles  = 12            ;%windir%\system32\drivers
+ProcEventEbpfExt.DriverFiles              = 13            ;driver store
+
+;;
+;; Default install sections
+;;
+
+[DefaultInstall.NT$ARCH$.10.0...25952]
+OptionDesc          = %ServiceDescription%
+CopyFiles           = ProcEventEbpfExt.DriverFiles
+
+[DefaultInstall.NT$ARCH$.10.0...25952.Services]
+AddService          = %ServiceName%,,ProcEventEbpfExt.Service
+
+;
+; Support sections
+;
+
+[ProcEventEbpfExt.Service]
+DisplayName      = %ServiceName%
+Description      = %ServiceDescription%
+ServiceBinary    = %13%\%DriverName%.sys        ;%windir%\system32\drivers\
+Dependencies     = "FltMgr"
+ServiceType      = 2                            ;SERVICE_FILE_SYSTEM_DRIVER
+StartType        = 3                            ;SERVICE_DEMAND_START
+ErrorControl     = 1                            ;SERVICE_ERROR_NORMAL
+LoadOrderGroup   = "FSFilter Activity Monitor"
+AddReg           = ProcEventEbpfExt.AddRegistry, Common.AddRegistry
+
+[ProcEventEbpfExt.AddRegistry]
+HKR,"Parameters","SupportedFeatures",0x00010001,0x3
+HKR,"Parameters\Instances","DefaultInstance",0x00000000,%DefaultInstance%
+HKR,"Parameters\Instances\"%Instance1.Name%,"Altitude",0x00000000,%Instance1.Altitude%
+HKR,"Parameters\Instances\"%Instance1.Name%,"Flags",0x00010001,%Instance1.Flags%
+
+[ProcEventEbpfExt.DriverFiles]
+%DriverName%.sys
+
+;;
+;; Registry values shared for all OS versions
+;;
+[Common.AddRegistry]
+HKR,"Parameters","UserMapping",0x00000000,%UserMapping%
+HKR,"Parameters","UserMappingFinalComponentShort",0x00000000,%UserMappingFinalComponentShort%
+HKR,"Parameters","RealMapping",0x00000000,%RealMapping%
+
+;;
+;; Downlevel default install sections
+;;
+
+[DefaultInstall.NT$ARCH$]
+OptionDesc          = %ServiceDescription%
+CopyFiles           = ProcEventEbpfExtDownlevel.CopyDriverFiles
+
+[DefaultInstall.NT$ARCH$.Services]
+AddService          = %ServiceName%,,ProcEventEbpfExtDownlevel.Service
+
+;;
+;; Downlevel default uninstall sections
+;;
+
+[DefaultUninstall.NT$ARCH$]
+LegacyUninstall = 1
+DelFiles        = ProcEventEbpfExtDownlevel.DelDriverFiles
+
+[DefaultUninstall.NT$ARCH$.Services]
+DelService = %ServiceName%,0x200      ;Ensure service is stopped before deleting
+
+;
+; Downlevel support sections
+;
+
+[ProcEventEbpfExtDownlevel.Service]
+DisplayName      = %ServiceName%
+Description      = %ServiceDescription%
+ServiceBinary    = %12%\%DriverName%.sys        ;%windir%\system32\drivers\
+Dependencies     = "FltMgr"
+ServiceType      = 2                            ;SERVICE_FILE_SYSTEM_DRIVER
+StartType        = 3                            ;SERVICE_DEMAND_START
+ErrorControl     = 1                            ;SERVICE_ERROR_NORMAL
+LoadOrderGroup   = "FSFilter Activity Monitor"
+AddReg           = ProcEventEbpfExtDownlevel.AddRegistry, Common.AddRegistry
+
+[ProcEventEbpfExtDownlevel.AddRegistry]
+HKR,,"SupportedFeatures",0x00010001,0x3
+HKR,"Instances","DefaultInstance",0x00000000,%DefaultInstance%
+HKR,"Instances\"%Instance1.Name%,"Altitude",0x00000000,%Instance1.Altitude%
+HKR,"Instances\"%Instance1.Name%,"Flags",0x00010001,%Instance1.Flags%
+
+[ProcEventEbpfExtDownlevel.CopyDriverFiles]
+%DriverName%.sys
+
+[ProcEventEbpfExtDownlevel.DelDriverFiles]
+%DriverName%.sys
+
+;;
+;; String Section
+;;
+
+[Strings]
+ProviderString          = "CapeLabs, Inc."
+ServiceDescription      = "ProcEventEbpfExt Mini-Filter Driver Sample"
+ServiceName             = "ProcEventEbpfExt"
+DriverName              = "ProcEventEbpfExt"
+
+;Instances specific information.
+DefaultInstance         = "ProcEventEbpfExt Instance"
+Instance1.Name          = "ProcEventEbpfExt Instance"
+Instance1.Altitude      = "370120"
+Instance1.Flags         = 0x0              ; Allow all attachments
+
+;Default settings
+UserMapping                    = "\X\Y"
+UserMappingFinalComponentShort = "Y"
+RealMapping                    = "\A\B"
