@@ -1,24 +1,24 @@
 # eBPF-for-DFIR
 
-eBPF-for-DFIR is an open-source tool that uses eBPF (Extended Berkeley Packet Filter) technology to collect real-time system data for Digital Forensics and Incident Response (DFIR) on Windows systems. By leveraging the ebpf-for-windows framework, it provides deep visibility into system activity and helps incident responders gather crucial information during investigations.
+eBPF-for-DFIR is an open-source tool that uses eBPF (Extended Berkeley Packet Filter) technology to collect real-time system data for Digital Forensics and Incident Response (DFIR) on Windows systems. By leveraging the eBPF-for-Windows framework, it provides deep visibility into system activity and helps incident responders gather crucial information during investigations.
 
 ## Features
 * Real-Time Data Collection: Captures system data in real time from Windows machines.
 
-* Windows Integration: Built on top of ebpf-for-windows, enabling detailed data collection on Windows.
+* Windows Integration: Built on top of eBPF-for-Windows, enabling detailed data collection on Windows.
 
 * DFIR-Focused: Designed for Digital Forensics and Incident Response to provide key insights during security investigations.
 
 ## Requirements
 * Windows Operating System: The tool is designed for use on Windows environments. (Windows 10 or later, Windows Server 2019 or later)
 
-* [ebpf-for-windows](https://github.com/microsoft/ebpf-for-windows): The tool relies on the eBPF framework for Windows to capture system events.
+* [eBPF-for-Windows](https://github.com/microsoft/ebpf-for-windows): The tool relies on the eBPF framework for Windows to capture system events.
 
 Please refer to this [setup document](docs/setup.md) for detailed configuration.
 
 
 ## Deep-dive
-This tool extends ebpf-for-windows by monitoring key system activities for DFIR:
+This tool extends eBPF-for-Windows by monitoring key system activities for DFIR:
 
 * FileEventEbpfExt: Monitors file system events, detecting file creation, modification, and deletion.
 
