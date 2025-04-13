@@ -1,6 +1,6 @@
 # eBPF-for-DFIR
 
-ebpf-for-dfir is an open-source tool that uses eBPF (Extended Berkeley Packet Filter) technology to collect real-time system data for Digital Forensics and Incident Response (DFIR) on Windows systems. By leveraging the ebpf-for-windows framework, it provides deep visibility into system activity and helps incident responders gather crucial information during investigations.
+eBPF-for-DFIR is an open-source tool that uses eBPF (Extended Berkeley Packet Filter) technology to collect real-time system data for Digital Forensics and Incident Response (DFIR) on Windows systems. By leveraging the ebpf-for-windows framework, it provides deep visibility into system activity and helps incident responders gather crucial information during investigations.
 
 ## Features
 * Real-Time Data Collection: Captures system data in real time from Windows machines.
