@@ -1,13 +1,13 @@
 # eBPF for DFIR Extension Guide
 
-This document serves as a guide for extending the functionality of `ebpf-for-dfir`. Follow these instructions to add new features or modify existing ones.
+This document serves as a guide for extending the functionality of `eBPF-for-DFIR`. Follow these instructions to add new features or modify existing ones.
 
 ## 1. How to Extend Functionality
 
 ### 1.1 Adding a New eBPF Event
-1. Check the available eBPF hooks provided by `ebpf-for-windows`.
+1. Check the available eBPF hooks provided by `eBPF-for-DFIR`.
 2. Develop an appropriate eBPF program to capture the desired event.
-3. Integrate the eBPF program with the data collection engine of `ebpf-for-dfir`.
+3. Integrate the eBPF program with the data collection engine of `eBPF-for-DFIR`.
 4. Structure and transform the captured data to make it suitable for analysis.
 
 ### 1.2 Using eBPF Extension Templates
@@ -42,7 +42,7 @@ Some files serve as templates and should be configured to operate based on speci
 ## 2. Development and Testing
 
 ### 2.1 Setting Up the Development Environment
-- Ensure the Windows environment is configured to build and run `ebpf-for-windows`.
+- Ensure the Windows environment is configured to build and run `eBPF-for-Windows`.
 - Install necessary libraries and tools.
 - If you are running on a Virtual Machine (Hyper-V), please refer to the [vm-setup](https://github.com/microsoft/ebpf-for-windows/blob/main/docs/vm-setup.md) document for guidance.
 
@@ -58,5 +58,5 @@ Some files serve as templates and should be configured to operate based on speci
 3. Continuously improve based on user feedback.
 
 ---
-Follow this document to extend the functionality of `ebpf-for-dfir`. If you have any questions or need further improvements, feel free to open an issue.
+Follow this document to extend the functionality of `eBPF-for-DFIR`. If you have any questions or need further improvements, feel free to open an issue.
 
