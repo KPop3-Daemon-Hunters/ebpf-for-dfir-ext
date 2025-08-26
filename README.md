@@ -16,7 +16,6 @@ eBPF-for-DFIR is an open-source tool that uses eBPF (Extended Berkeley Packet Fi
 
 Please refer to this [setup document](docs/setup.md) for detailed configuration.
 
-
 ## Deep-dive
 This tool extends eBPF-for-Windows by monitoring key system activities for DFIR:
 
@@ -27,6 +26,14 @@ This tool extends eBPF-for-Windows by monitoring key system activities for DFIR:
 * ProcEventEbpfExt: Monitors process execution, including process creation and termination.
 
 * NetEventEbpfExt: Captures network-related events such as connections and data transmissions.
+
+## Example Projects
+
+The `examples/` directory contains user-level projects that demonstrate how to receive eBPF data and output it to the console. These examples show how to interact with the eBPF-for-DFIR extensions from user space, making it easier to collect and display real-time system activity for DFIR purposes.
+
+- **process_collector**: Receives process-related eBPF events and prints them to the console. This project illustrates how to subscribe to process creation and termination events, and how to format and display this information for analysis.
+
+These examples can be used as a reference for building your own user-level tools that consume eBPF data on Windows.
 
 ## Future works
 * MutexEventEbpfExt: Monitors the creation of mutex objects to track synchronization events in the system.

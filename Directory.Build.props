@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (c) Microsoft Corporation
+  SPDX-License-Identifier: MIT
+-->
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" TreatAsLocalProperty="Platform">
+  <PropertyGroup Condition="'$(Analysis)'=='True' And '$(MSBuildProjectExtension)'!='.csproj'">
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DisableAnalyzeExternal>true</DisableAnalyzeExternal>
+    <CodeAnalysisRuleSet>$(SolutionDir)Analyze.default.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <eBPFExtensionsVersionMajor>0</eBPFExtensionsVersionMajor>
+    <eBPFExtensionsVersionMinor>1</eBPFExtensionsVersionMinor>
+    <eBPFExtensionsVersionRevision>0</eBPFExtensionsVersionRevision>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(AddressSanitizer)'=='True' And '$(MSBuildProjectExtension)'!='.csproj'">
+    <EnableASAN>true</EnableASAN>
+  </PropertyGroup>
+    <PropertyGroup>
+    <ClangExec>"$(VsInstallRoot)\VC\Tools\Llvm\bin\clang.exe"</ClangExec>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <WarningLevel>Level4</WarningLevel>
+      <LanguageStandard>stdcpp20</LanguageStandard>
+      <TreatWarningAsError>true</TreatWarningAsError>
+      <SDLCheck>true</SDLCheck>
+      <SupportJustMyCode>false</SupportJustMyCode>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <ControlFlowGuard>Guard</ControlFlowGuard>
+      <AdditionalOptions>/ZH:SHA_256 /we4062 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(WindowsSdkDir)Include\10.0.22621.0\km;$(SolutionDir)external\ebpf-verifier\build\packages\boost\lib\native\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <CETCompat>true</CETCompat>
+      <AdditionalLibraryDirectories>$(VC_LibraryPath_VC_x64_Desktop);%(Link.AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(DisableJIT)'=='True'">
+    <ClCompile>
+        <PreprocessorDefinitions>CONFIG_BPF_JIT_DISABLED;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(DisableInterpreter)'=='True'">
+    <ClCompile>
+        <PreprocessorDefinitions>CONFIG_BPF_INTERPRETER_DISABLED;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WholeProgramOptimization Condition="'$(EnableAsan)' != 'true'">true</WholeProgramOptimization>
+    </ClCompile>
+    <Link>
+      <AdditionalOptions Condition="'$(EnableASAN)' != 'true'">/spgo %(AdditionalOptions)</AdditionalOptions>
+      <LinkTimeCodeGeneration Condition="'$(EnableAsan)' != 'true'">UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)'=='.csproj'">
+    <RunSettingsFilePath>$(MSBuildThisFileDirectory)\RunSettings.runsettings</RunSettingsFilePath>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <Platform>x64</Platform>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <ArtifactsPath>$(MSBuildThisFileDirectory)\$(Platform)\$(Configuration)</ArtifactsPath>
+    <ArtifactsPivots>$(RuntimeIdentifier)</ArtifactsPivots>
+  </PropertyGroup>
+</Project>

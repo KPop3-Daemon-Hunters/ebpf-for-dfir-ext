@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "bQagQNHkEms=",
+  "success": false,
+  "projectFilePath": "D:\\dev\\eBPF-for-DFIR\\examples\\process_monitor\\process_monitor.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "Unable to read project information for 'process_monitor': Invalid framework identifier ''."
+    }
+  ]
+}

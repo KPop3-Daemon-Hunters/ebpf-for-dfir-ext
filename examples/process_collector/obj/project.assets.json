@@ -1,0 +1,33 @@
+{
+  "version": 3,
+  "targets": {},
+  "libraries": {},
+  "projectFileDependencyGroups": {},
+  "packageFolders": {
+    "C:\\Users\\austinkim\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "D:\\dev\\eBPF-for-DFIR\\examples\\process_monitor\\process_monitor.csproj",
+      "projectPath": "D:\\dev\\eBPF-for-DFIR\\examples\\process_monitor\\process_monitor.csproj",
+      "packagesPath": "C:\\Users\\austinkim\\.nuget\\packages\\",
+      "outputPath": "D:\\dev\\eBPF-for-DFIR\\examples\\process_monitor\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\austinkim\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      }
+    }
+  },
+  "logs": [
+    {
+      "code": "NU1105",
+      "level": "Error",
+      "message": "Unable to read project information for 'process_monitor': Invalid framework identifier ''."
+    }
+  ]
+}
