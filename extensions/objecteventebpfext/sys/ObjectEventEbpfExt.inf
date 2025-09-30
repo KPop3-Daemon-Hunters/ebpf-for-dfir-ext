@@ -1,0 +1,77 @@
+;
+; ObjectEventEbpfExt.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=ObjectEventEbpfExt.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+ObjectEventEbpfExt_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+ObjectEventEbpfExt.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%ObjectEventEbpfExt.DeviceDesc%=ObjectEventEbpfExt_Device, Root\ObjectEventEbpfExt
+
+[ObjectEventEbpfExt_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+ObjectEventEbpfExt.sys
+
+;-------------- Service installation
+[ObjectEventEbpfExt_Device.NT.Services]
+AddService = ObjectEventEbpfExt,%SPSVCINST_ASSOCSERVICE%, ObjectEventEbpfExt_Service_Inst
+
+; -------------- ObjectEventEbpfExt driver install sections
+[ObjectEventEbpfExt_Service_Inst]
+DisplayName    = %ObjectEventEbpfExt.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ObjectEventEbpfExt.sys
+
+;
+;--- ObjectEventEbpfExt_Device Coinstaller installation ------
+;
+
+[ObjectEventEbpfExt_Device.NT.CoInstallers]
+AddReg=ObjectEventEbpfExt_Device_CoInstaller_AddReg
+CopyFiles=ObjectEventEbpfExt_Device_CoInstaller_CopyFiles
+
+[ObjectEventEbpfExt_Device_CoInstaller_AddReg]
+;
+
+
+[ObjectEventEbpfExt_Device_CoInstaller_CopyFiles]
+;
+
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="DFIR Team"
+DiskName = "ObjectEventEbpfExt Installation Disk"
+ObjectEventEbpfExt.DeviceDesc = "ObjectEventEbpfExt Device"
+ObjectEventEbpfExt.SVCDESC = "ObjectEventEbpfExt Service"
