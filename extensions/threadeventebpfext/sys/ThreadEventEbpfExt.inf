@@ -1,0 +1,77 @@
+;
+; ThreadEventEbpfExt.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318}
+Provider=%ManufacturerName%
+CatalogFile=ThreadEventEbpfExt.cat
+DriverVer= ; TODO: set DriverVer in stampinf property pages
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+ThreadEventEbpfExt_Device_CoInstaller_CopyFiles = 11
+
+; ================= Class section =====================
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+ThreadEventEbpfExt.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NT$ARCH$
+
+[Standard.NT$ARCH$]
+%ThreadEventEbpfExt.DeviceDesc%=ThreadEventEbpfExt_Device, Root\ThreadEventEbpfExt
+
+[ThreadEventEbpfExt_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+ThreadEventEbpfExt.sys
+
+;-------------- Service installation
+[ThreadEventEbpfExt_Device.NT.Services]
+AddService = ThreadEventEbpfExt,%SPSVCINST_ASSOCSERVICE%, ThreadEventEbpfExt_Service_Inst
+
+; -------------- ThreadEventEbpfExt driver install sections
+[ThreadEventEbpfExt_Service_Inst]
+DisplayName    = %ThreadEventEbpfExt.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\ThreadEventEbpfExt.sys
+
+;
+;--- ThreadEventEbpfExt_Device Coinstaller installation ------
+;
+
+[ThreadEventEbpfExt_Device.NT.CoInstallers]
+AddReg=ThreadEventEbpfExt_Device_CoInstaller_AddReg
+CopyFiles=ThreadEventEbpfExt_Device_CoInstaller_CopyFiles
+
+[ThreadEventEbpfExt_Device_CoInstaller_AddReg]
+;
+
+
+[ThreadEventEbpfExt_Device_CoInstaller_CopyFiles]
+;
+
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="DFIR Team"
+DiskName = "ThreadEventEbpfExt Installation Disk"
+ThreadEventEbpfExt.DeviceDesc = "ThreadEventEbpfExt Device"
+ThreadEventEbpfExt.SVCDESC = "ThreadEventEbpfExt Service"
